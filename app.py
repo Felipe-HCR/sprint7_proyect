@@ -55,3 +55,9 @@ if show_diagram_button:
 
         # Mostrar el gráfico Plotly interactivo en la aplicación Streamlit
         st.plotly_chart(fig, use_container_width=True)
+
+    elif not build_histogram and not build_scatter:
+        st.write('Por favor, seleccione al menos un tipo de diagrama para construir.')
+
+    elif build_histogram and build_scatter:
+        st.write('Por favor, seleccione solo un tipo de diagrama a la vez.')
