@@ -48,8 +48,8 @@ if show_diagram_button:
 
         # Agregamos un título al gráfico y etiquetas a los ejes
         fig.update_layout(
-            title_text='Diagrama de Dispersión del Precio vs Año',
-            xaxis_title='Año',
+            title_text='Diagrama de Dispersión del Odómetro vs Año',
+            xaxis_title='Odometro',
             yaxis_title='Precio'
         )
 
@@ -61,3 +61,12 @@ if show_diagram_button:
 
     elif build_histogram and build_scatter:
         st.write('Por favor, seleccione solo un tipo de diagrama a la vez.')
+
+# logica para mostrar el dataframe completo en rangos seleccionables
+# crear dos variables para el rango de filas
+start_row = st.number_input(
+    'Fila inicial (empezando desde la fila marcada)', min_value=0, max_value=len(car_data)-1, value=0)
+end_row = st.number_input('Fila final (llegando a una fila antes del número seleccionado, valor máximo 51525)', min_value=0,
+                          max_value=len(car_data), value=10)
+# mostrar el dataframe completo en el rango seleccionado
+st.dataframe(car_data.iloc[start_row:end_row])
